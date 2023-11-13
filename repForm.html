@@ -29,7 +29,7 @@
   }
 </style>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top pt-3 pb-3">
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top pt-3 pb-3">
     <div class="container-fluid">
         <div  class="show-mobile hide-desktop"><a class="navbar-brand" href="https://rapidsuite.ng"><img src="images/Vector.png" alt="logo"></a></div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@
         </ul>
         <dv class="gap-3 nav-btn-wrapper">
           <a href="login.html"><button class="btn login" >Login</button></a>
-          <a href="login.html"><button class="btn signup">Sign up</button></a>
+          <a href="signup.html"><button class="btn signup">Sign up</button></a>
         </div>
       </div>
     </div>
@@ -61,12 +61,11 @@
       <div class="modal fade" id="overlayModal" tabindex="-1" aria-labelledby="overlayModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-              <!--- 
+               
                 <div class="modal-header" style="background-color: #011B33 !important;">
                     <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                ---->
-                    <div class="modal-body">
+               <div class="modal-body">
                         <ul class="list-unstyled">
                           <li class="list-group-item pt-4"><a href="paymoff.html" class="text-white text-decoration-none">Paymoff</a></li>
                           <li class="list-group-item pt-4 "><a href="web.html" class="text-white text-decoration-none">Rapid web</a></li>
@@ -88,22 +87,22 @@
             <iframe    class="form-vid-style-u" src="https://www.youtube.com/embed/hHyjkIX0E2g" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="col-md-6 col-sm-12">
-          <form action="" class="">
+          <form action="" class="" id="contactForm">
             <div class="row mb-3">
               <div class="col-md-6">
                 <label for="first-name" class="pt-4 fw-bold">First Name</label>
-                <input type="text" id="first-name" class="form-control" placeholder="First Name"/>
+                <input type="text" id="first_name" class="form-control" placeholder="First Name"/>
               </div>
               <div class="col-md-6">
                 <label for="last-name" class="pt-4 fw-bold">Last Name</label>
-                <input type="text" id="last-name" class="form-control" placeholder="Last Name"/>
+                <input type="text" id="last_name" class="form-control" placeholder="Last Name"/>
               </div>
             </div>
             <label for="school-name" class="pt-4 fw-bold">School Name</label>
-            <input type="text" id="school-name" class="form-control" placeholder="School Name"/>
+            <input type="text" id="school_name"class="form-control" placeholder="School Name"/>
             
             <label for="school-capacity" class="pt-4 fw-bold">School capacity ranges</label>
-            <select id="school-capacity" class="form-select" placeholder="School capacity ranges">
+            <select id="capacity_ranges" class="form-select" placeholder="School capacity ranges">
               <option value="200-300">100-200</option>
               <option value="200-300">100-300</option>
               <option value="200-300">100-400</option>
@@ -111,17 +110,36 @@
             </select>
             
             <label for="hear-about-us" class="pt-4 fw-bold">How did you hear about us?</label>
-            <input type="text" id="hear-about-us" class="form-control" placeholder="How did you hear about us"/>
+            <input type="text" id="referral_source" class="form-control" placeholder="How did you hear about us"/>
             
             <label for="results" class="pt-4 fw-bold">What results are you trying to create for your school with Rapid suite?</label>
-            <textarea id="results" class="form-control" rows="5"></textarea>
-          </form>
+            <textarea id="desired_results" class="form-control" rows="5"></textarea>
           
-          <a href="schedule.html"><button class="btn btn-primary rep-btn2 mt-4">Speak to a representative</button></a>
+          
+          <button class="btn btn-primary rep-btn2 mt-4" type="submit">Speak to a representative</button>
+        </form>
         </div>
         
-        </div>
-    </div>
+        </div> 
+      
+    </div> 
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          const form = new FormData(this);
+          
+          fetch('https://rapidsuite.ng/api_holder/API/handle_speak_to_a_representative.php', {
+              method: 'POST',
+              body: form
+          })
+          .then(response => response.json())
+          .then(data => {
+              alert(data.message);
+              // Additional actions after form submission if needed
+          })
+          .catch(error => console.error('Error:', error));
+      });
+  </script>
       
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

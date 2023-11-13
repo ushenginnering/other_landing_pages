@@ -149,7 +149,7 @@
         </ul>
         <dv class="gap-3 nav-btn-wrapper">
           <a href="login.html"><button class="btn login" >Login</button></a>
-          <a href="login.html"><button class="btn signup">Sign up</button></a>
+          <a href="signup.html"><button class="btn signup">Sign up</button></a>
         </div>
       </div>
     </div>
@@ -196,14 +196,14 @@
       </div>
 
 
-      <div class="row gap-4 justify-content-center pt-lg-5 pb-lg-5 pricingBox-wrapper">
+      <div class="row gap-4 justify-content-center pt-lg-5 pb-lg-5 pricingBox-wrapper" id="selectPlanForm">
           <div class="pricingBox col-lg-3 col-md-2 col-sm-6 ">
             <img src="images/construction.png" alt="icon" class="pt-5">
             <h3 class="boxes3heading mt-3">Free level</h3>
             <p class="pt-4">This level is <span class="vidlink"><b>free </span></b>for everyone to use, </p>
             <p class="gradient2"  style="font-size: 10px; text-transform: lowercase;">but users can make in-app purchases to unlock additional features.</p>
             <p class="pt-3">This level includes access to the learning center product.</p>
-            <button class="free-btn mb-3">free</button>
+            <button class="free-btn mb-3 purchase-btn">free</button>
           </div>
 
 
@@ -249,7 +249,7 @@
         </div>
       <div>
         <p class="vidlink align-left">Total: <b></b>#2,100</b></p>
-        <button class="compiler-btn text-white mb-3" style="border-radius: 10px;">Purchase plan now</button>
+        <button class="compiler-btn text-white mb-3 purchase-btn" style="border-radius: 10px;">Purchase plan now</button>
       </div>
     </div>
   </div>
@@ -261,7 +261,7 @@
             <p>No hassel, for just  <span>#2000</span> per child per year </p>
             <p>you would have full access to all our free and premium products </p>
             <p class="gradient2" style="font-size: 10px; text-transform: lowercase;">Paymoff, Rapid web, and Rapid driller products.</p>
-            <button class="compiler-btn text-white mb-3" style="border-radius: 10px;">Purchase plan now</button>
+            <button class="compiler-btn text-white mb-3 purchase-btn" style="border-radius: 10px;">Purchase plan now</button>
           </div>
         </div>
     </div>
@@ -324,6 +324,33 @@
       </div>
     </a>
   </div>
+  
+  <script>
+    // Add event listeners to all "Purchase plan now" buttons
+    const purchaseButtons = document.querySelectorAll('.purchase-btn');
+
+    purchaseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Get the selected package from the data-package attribute
+            const selectedPackage = this.getAttribute('data-package');
+
+            // Send the selected package to the database
+            fetch(`https://rapidsuite.ng/api_holder/API/handle_select_plan.php?package=${selectedPackage}`, {
+                method: 'POST', // Use POST method for sending data to the server
+                // Add other fetch options if needed
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the server if needed
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors if any
+            });
+        });
+    });
+</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

@@ -15,7 +15,7 @@ passwordInput.addEventListener('input', function () {
     const isValidPassword = pattern.test(passwordValue);
 
     if (!isValidPassword) {
-      teacherPasswordInput.setCustomValidity('Password must contain at least 8 characters, including one letter, one number, and one special character.');
+      passwordInput.setCustomValidity('Password must contain at least 8 characters, including one letter, one number, and one special character.');
     } else {
         passwordInput.setCustomValidity('');
     }
@@ -32,18 +32,18 @@ function showPopup() {
   popup.classList.remove('d-none');
 }
 
-function hidePopup() {
-  signUpWrapper.style.display = 'block'; 
-  popup.classList.add('d-none');
-}
-signUpButton.addEventListener('click', function(event) {
-  event.preventDefault(); 
-  showPopup();
-});
+// function hidePopup() {
+//   signUpWrapper.style.display = 'block'; 
+//   popup.classList.add('d-none');
+// }
+// signUpButton.addEventListener('click', function(event) {
+//   event.preventDefault(); 
+//   showPopup();
+// });
 
-closeButton.addEventListener('click', function() {
-  hidePopup();
-});
+// closeButton.addEventListener('click', function() {
+//   hidePopup();
+// });
 
 form.addEventListener('submit', function(event) {
   event.preventDefault(); 
@@ -64,30 +64,30 @@ loginButton.addEventListener('click', showLoginPage);
 const loginPasswordInput = document.getElementById('loginPasswordInput');
 const toggleLoginPassword = document.getElementById('toggleLoginPassword');
 
-toggleLoginPassword.addEventListener('click', function () {
-  const type = loginPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-  loginPasswordInput.setAttribute('type', type);
-  toggleLoginPassword.querySelector('img').src = type === 'password' ? 'images/eye-slash.svg' : 'images/eye-slash.svg';
-});
+// toggleLoginPassword.addEventListener('click', function () {
+//   const type = loginPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+//   loginPasswordInput.setAttribute('type', type);
+//   toggleLoginPassword.querySelector('img').src = type === 'password' ? 'images/eye-slash.svg' : 'images/eye-slash.svg';
+// });
 
-loginPasswordInput.addEventListener('input', function () {
-  const passwordValue = loginPasswordInput.value;
-  const pattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-  const isValidPassword = pattern.test(passwordValue);
+// loginPasswordInput.addEventListener('input', function () {
+//   const passwordValue = loginPasswordInput.value;
+//   const pattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+//   const isValidPassword = pattern.test(passwordValue);
 
-  if (!isValidPassword) {
-    teacherPasswordInput.setCustomValidity('Password must contain at least 8 characters, including one letter, one number, and one special character.');
-  } else {
-    loginPasswordInput.setCustomValidity('');
-  }
-});
+//   if (!isValidPassword) {
+//     passwordInput.setCustomValidity('Password must contain at least 8 characters, including one letter, one number, and one special character.');
+//   } else {
+//     loginPasswordInput.setCustomValidity('');
+//   }
+// });
 
-const closeLoginButton = document.getElementById('closeLoginButton');
+// const closeLoginButton = document.getElementById('closeLoginButton');
 
-closeLoginButton.addEventListener('click', function() {
-  loginPage.classList.add('d-none');
-  signUpWrapper.style.display = 'block';
-});
+// closeLoginButton.addEventListener('click', function() {
+//   loginPage.classList.add('d-none');
+//   signUpWrapper.style.display = 'block';
+// });
 
 positionSelect.addEventListener("change", function () {
     if (positionSelect.value === "teacher") {
@@ -119,8 +119,8 @@ function move(){
 }
 
 
-function opt(){
-  window.location.href = "OPT.html"; 
+function otp(){
+  window.location.href = "OTP.html"; 
 }
 
 
